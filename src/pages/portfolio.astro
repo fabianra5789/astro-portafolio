@@ -1,0 +1,82 @@
+---
+import { WORK } from '../lib/constants'
+import BaseLayout from '../layouts/BaseLayout.astro'
+import TopLayout from '../layouts/TopLayout.astro'
+import BottomLayout from '../layouts/BottomLayout.astro'
+import ProjectCard from '../components/ProjectCard.astro'
+
+import { contentfulClient } from '../lib/contentful'
+import { documentToHtmlString } from '@contentful/rich-text-html-renderer'
+import type { EntryFieldTypes } from 'contentful'
+
+interface Project {
+  contentTypeId: 'Projects'
+  fields: {
+    name: EntryFieldTypes.Text
+    img: EntryFieldTypes.AssetLink
+    website: EntryFieldTypes.EntryResourceLink<any>
+    repositorio: EntryFieldTypes.EntryResourceLink<any>
+  }
+}
+
+const entries = await contentfulClient.getEntries<Project>({})
+---
+
+<BaseLayout
+  title="Portfolio"
+  description="Projects and some clone's that I did"
+>
+  <main class="flex min-h-[80vh] flex-auto flex-col" transition:animate="slide">
+    <TopLayout>
+      <h2
+        class="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0"
+      >
+        Projects and clone's
+      </h2>
+    </TopLayout>
+    <BottomLayout size="xl">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {
+          entries.items.map((entry: any) => (
+            <div
+              key={entry?.sys?.id}
+              class="rounded-lg shadow-lg border border-gray-200 p-4 bg-white dark:bg-gray-800 dark:border-gray-700"
+            >
+              <img
+                src={entry?.fields?.img?.fields?.file?.url}
+                alt={entry?.fields?.img?.fields?.title || 'Project image'}
+                class="w-full h-40 object-cover rounded-md"
+              />
+              <h3 class="text-lg font-semibold mt-4 text-gray-900 dark:text-gray-100">
+                {entry?.fields?.name}
+              </h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400">
+                {entry?.fields?.description}
+              </p>
+              <div class="flex justify-between mt-4">
+                <a
+                  href={entry?.fields?.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-sm bg-teal-500 hover:bg-teal-600 text-white font-medium py-1 px-3 rounded-md"
+                >
+                  Ver Proyecto
+                </a>
+                <a
+                  href={entry?.fields?.repositorio}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-sm bg-gray-500 hover:bg-gray-600 text-white font-medium py-1 px-3 rounded-md"
+                >
+                  Repositorio
+                </a>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </BottomLayout>
+  </main>
+</BaseLayout>
+
+
