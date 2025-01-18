@@ -98,7 +98,7 @@ export const EXPERIENCE = [
   },
   {
     company: 'Avista',
-    link: 'https://imaginamos.com/',
+    link: 'https://avista.co/',
     location: 'Bogotá D C, Colombia',
     position: 'Systems Technician',
     start: '2019',

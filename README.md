@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 ---
 
 # Astro Portfolio
@@ -95,7 +95,4 @@ Contributions are welcome! If you have ideas or improvements, please open an iss
 
 This project is licensed under the [MIT License](LICENSE)..
 
----
-=======
-# astro-portafolio
->>>>>>> 3b9ceb953c05b17c81d53c37ab4184ea18bbc383
+
