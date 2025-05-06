@@ -51,7 +51,7 @@ export const STUDIES = [
   {
     title: 'Computer Science',
     institution: 'Universidad Central',
-    link: 'https://www.ucentral.edu.co/',
+    link: 'https://www.ucentral.edu.co/oferta-academica/ingenieria-sistemas-computacion',
     date: '2020 - 2025',
   },
   {
@@ -74,7 +74,7 @@ export const EXPERIENCE = [
   {
     company: 'Carvajal tecnologia y servicios',
     location: 'Bogotá D C, Colombia',
-    position: 'Systems Technician',
+    position: 'Systems Engineer and Systems Technician',
     start: '2022',
     link: 'https://www.carvajaltys.com/',
     end: 'Current',
@@ -83,17 +83,19 @@ export const EXPERIENCE = [
       ,
     ],
   },
+  
   {
-    company: 'Carvajal tecnologia y servicios',
+    company: 'Alberto Merani Foundation Projects',
     location: 'Bogotá D C, Colombia',
-    position: 'Systems Engineer',
+    position: 'Graphic Designer, Multimedia and Specialized Technician',
     link: 'https://www.carvajaltys.com/',
-    start: '2022',
-    end: 'Current',
+    start: '2025',
+    end: '2025',
     tasks: [
-      'Development  platform with the use of React, Redux, and Material UI',
-      'Development internal platform with the use of React, Redux, and Material UI',
-      'Testing and debugging',
+      'Developed interactive courses for the Ministry of Education, focusing on the creation of digital educational content.',
+      'Used tools such as Storyline 360 for designing learning modules and Vyond for producing animations.',
+      'Implemented multimedia learning strategies to enhance the educational experience for users.',
+      'Performed testing and adjustments on courses to ensure functionality and accessibility across various platforms.',
     ],
   },
   {
