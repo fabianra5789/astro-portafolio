@@ -76,7 +76,7 @@ export const EXPERIENCE = [
     location: 'Bogotá D C, Colombia',
     position: 'Systems Engineer and Systems Technician',
     start: '2022',
-    link: 'https://www.carvajaltys.com/',
+    link: 'https://www.carvajal.com/tecnologia/',
     end: 'Current',
     tasks: [
       'I provided support for computer equipment, printers, software applications, managed tools like GLPI, handled inventories, etc.',
@@ -88,7 +88,7 @@ export const EXPERIENCE = [
     company: 'Alberto Merani Foundation Projects',
     location: 'Bogotá D C, Colombia',
     position: 'Graphic Designer, Multimedia and Specialized Technician',
-    link: 'https://www.carvajaltys.com/',
+    link: 'https://albertomerani.org',
     start: '2025',
     end: '2025',
     tasks: [
