@@ -11,6 +11,7 @@ export const LINKS = {
   linkedin: 'https://www.linkedin.com/in/eric-fabian-ramirez-aguilar-8b0063230/',
   mail: 'mailto:fabianra5789@gmail.com',
   instagram: 'https://www.instagram.com/Ericc.raw/',
+  whatsapp: 'https://wa.me/573102726524',
   
 }
 
