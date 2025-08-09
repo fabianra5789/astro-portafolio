@@ -7,6 +7,7 @@ import ProjectCard from '../components/ProjectCard.astro'
 import { contentfulClient } from '../lib/contentful'
 import type { EntryFieldTypes } from 'contentful'
 import { Github, ExternalLink } from 'lucide-react'
+import { Button } from '../components/ui/button'
 
 interface Project {
 contentTypeId: 'Projects'
@@ -28,53 +29,94 @@ description="Projects and some clone's that I did"
 >
 <main class="flex min-h-[80vh] flex-auto flex-col" transition:animate="slide">
 <TopLayout>
-<h2 class="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0">
- Projects and clone's
+<div class="text-center space-y-4">
+<h2 class="scroll-m-20 border-b-2 border-primary/20 pb-4 text-4xl font-bold tracking-tight first:mt-0 bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
+✨ Projects & Clone's
 </h2>
+<p class="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+Explora mi colección de proyectos creativos y clones funcionales que demuestran mis habilidades de desarrollo
+</p>
+</div>
 </TopLayout>
 <BottomLayout size="xl">
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
 {
 entries.items.map((entry: any) => (
 <div
 key={entry?.sys?.id}
-class="rounded-lg shadow-lg border border-gray-200 p-4 bg-white dark:bg-gray-800 dark:border-gray-700"
+class="group relative rounded-xl shadow-lg border border-border bg-card hover:shadow-xl transition-all duration-300 hover:scale-[1.02] overflow-hidden"
 >
+{/* Decorative gradient overlay */}
+<div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+{/* Image container with improved styling */}
+<div class="relative overflow-hidden rounded-t-xl">
 <img
 src={entry?.fields?.img?.fields?.file?.url}
 alt={entry?.fields?.img?.fields?.title || 'Project image'}
-class="w-full h-40 object-cover rounded-md"
+class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
 />
-<h3 class="text-lg font-semibold mt-4 text-gray-900 dark:text-gray-100">
+<div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+</div>
+
+{/* Content with improved spacing */}
+<div class="relative p-6 space-y-3">
+<h3 class="text-lg font-bold text-card-foreground group-hover:text-primary transition-colors duration-300 line-clamp-2">
 {entry?.fields?.name}
 </h3>
-<p class="text-sm text-gray-600 dark:text-gray-400">
+<p class="text-sm text-muted-foreground leading-relaxed line-clamp-2">
 {entry?.fields?.description}
 </p>
-<div class="flex justify-between mt-4">
+
+{/* Compact button layout */}
+<div class="flex gap-2 pt-1">
 <a
 href={entry?.fields?.website}
 target="_blank"
 rel="noopener noreferrer"
-class="flex items-center text-sm bg-gradient-to-r from-orange-400 to-orange-600 hover:from-orange-600 hover:to-orange-400 text-white font-medium py-2 px-4 rounded-lg shadow-lg transform transition-all duration-300 hover:scale-105"
+class="flex-1"
 >
-<ExternalLink class="w-5 h-5 mr-2" />
-<span>Ver Proyecto</span>
+<Button size="sm" className="w-full h-8 text-xs flex items-center justify-center gap-1.5 transition-all duration-200 hover:scale-105">
+<ExternalLink size={14} />
+<span class="hidden sm:inline">Ver Proyecto</span>
+<span class="sm:hidden">Ver</span>
+</Button>
 </a>
 <a
 href={entry?.fields?.repositorio}
 target="_blank"
 rel="noopener noreferrer"
-class="flex items-center text-sm bg-gradient-to-r from-orange-400 to-orange-600 hover:from-orange-600 hover:to-orange-400 text-white font-medium py-2 px-4 rounded-lg shadow-lg transform transition-all duration-300 hover:scale-105"
+class="flex-1"
 >
-<Github class="w-5 h-5 mr-2" />
-<span>Repositorio</span>
+<Button size="sm" variant="outline" className="w-full h-8 text-xs flex items-center justify-center gap-1.5 transition-all duration-200 hover:scale-105">
+<Github size={14} />
+<span class="hidden sm:inline">Repositorio</span>
+<span class="sm:hidden">Repo</span>
+</Button>
 </a>
 </div>
 </div>
- ))
+
+{/* Subtle corner accent */}
+<div class="absolute top-4 right-4 w-2 h-2 bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+</div>
+))
 }
 </div>
+
+{/* Enhanced empty state */}
+{entries.items.length === 0 && (
+<div class="text-center py-20 space-y-6">
+<div class="text-8xl opacity-50">🚀</div>
+<div class="space-y-2">
+<h3 class="text-3xl font-bold text-card-foreground">¡Próximamente!</h3>
+<p class="text-lg text-muted-foreground max-w-md mx-auto">
+Estoy trabajando en proyectos increíbles que pronto estarán disponibles aquí.
+</p>
+</div>
+<div class="w-24 h-1 bg-gradient-to-r from-primary to-primary/50 mx-auto rounded-full"></div>
+</div>
+)}
 </BottomLayout>
 </main>
 </BaseLayout>
